@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<skipper version="3.0.0.1104" name="RollNApi" mvc="Without MVC" orm="Doctrine2" uuid="b2e35a70-032a-41a7-afc4-913f212f99cf">
+  <module name="Db" import-format="Doctrine2Xml" import-path="../module/Db/config/xml" uuid="376d3ca6-ef29-430f-8672-fc8066e0158d">
+    <entity name="Artist" uuid="e6349ff6-615e-4fd3-b584-c00e5e263ee7">
+      <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="4c18c5cc-925a-4636-a613-aa3685e7a274"/>
+      <field name="name" type="string" uuid="5fafe396-a936-41d9-b9ab-6c92b0ccf4fc"/>
+    </entity>
+    <entity name="Album" uuid="9cfd0d4b-9c0a-432c-8c54-b27be04e66b6">
+      <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="8b7e509e-3c89-4df4-998b-dcb8fe7bc2e7"/>
+      <field name="name" type="string" uuid="0b35aa2f-c576-42ad-b49f-dae946e6c088"/>
+      <field name="artist_id" type="integer" required="true" uuid="fe79455c-b80f-4ffb-afe4-7b011a317853"/>
+    </entity>
+    <association from="Album" to="Artist" owner-alias="album" inverse-alias="artist" uuid="c403d7d8-e202-461c-be3d-a50d1c1275c5">
+      <association-field from="artist_id" to="id"/>
+    </association>
+    <entity name="Loop" uuid="e0bc6208-4336-45e9-b5da-35d342ced5da">
+      <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="c5f26342-af93-4f5e-939b-eff7420044f9"/>
+      <field name="loop_id" type="integer" uuid="25549ed8-7131-4805-9248-9735bcbd167f"/>
+    </entity>
+    <association from="Loop" to="Loop" owner-alias="loopBack" inverse-alias="loop" uuid="36d8c359-c22e-49cd-8315-a9c27ab66bbd">
+      <association-field from="loop_id" to="id"/>
+    </association>
+    <orm-attributes>
+      <attribute name="namespace">Db\Entity</attribute>
+    </orm-attributes>
+  </module>
+  <visual-data>
+    <association uuid="36d8c359-c22e-49cd-8315-a9c27ab66bbd" center-position-x="0" center-position-y="-20" color="4288059030"/>
+    <module uuid="376d3ca6-ef29-430f-8672-fc8066e0158d" bg-color="4294831087" position-x="61" position-y="72" size-x="11" size-x2="667" size-y="22" size-y2="613"/>
+    <entity uuid="9cfd0d4b-9c0a-432c-8c54-b27be04e66b6" bg-color="4294967295" hdr-color="4292006610" position-x="66" position-y="160" size-x="0" size-x2="91" size-y="0" size-y2="59"/>
+    <project uuid="b2e35a70-032a-41a7-afc4-913f212f99cf" size-x="0" size-x2="764" size-y="0" size-y2="716"/>
+    <association uuid="c403d7d8-e202-461c-be3d-a50d1c1275c5" caption1-position-x="0" caption1-position-y="0" center-position-x="0" center-position-y="0" color="4288059030"/>
+    <entity uuid="e0bc6208-4336-45e9-b5da-35d342ced5da" bg-color="4294967295" hdr-color="4292006610" position-x="292" position-y="72" size-x="0" size-x2="20" size-y="0" size-y2="20"/>
+    <entity uuid="e6349ff6-615e-4fd3-b584-c00e5e263ee7" bg-color="4294967295" hdr-color="4292006610" position-x="73" position-y="57" size-x="0" size-x2="20" size-y="0" size-y2="20"/>
+  </visual-data>
+</skipper>
